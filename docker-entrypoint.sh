@@ -5,11 +5,16 @@ execute_ssh(){
   echo "Execute Over SSH: $@"
   ssh -q -t -i "$HOME/.ssh/id_rsa" \
       -o UserKnownHostsFile=/dev/null \
-      -o StrictHostKeyChecking=no "$INPUT_REMOTE_DOCKER_HOST" "$@"
+      -o StrictHostKeyChecking=no -p "$INPUT_REMOTE_DOCKER_PORT" "$INPUT_REMOTE_DOCKER_HOST" "$@"
 }
 
 if [ -z "$INPUT_REMOTE_DOCKER_HOST" ]; then
     echo "Input remote_docker_host is required!"
+    exit 1
+fi
+
+if [ -z "$INPUT_REMOTE_DOCKER_PORT" ]; then
+    echo "Input remote_docker_port is required!"
     exit 1
 fi
 
