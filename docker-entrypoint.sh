@@ -4,9 +4,7 @@ set -eu
 execute_ssh(){
   echo "Execute Over SSH: $@"
   echo "Host: $INPUT_REMOTE_DOCKER_HOST $INPUT_REMOTE_DOCKER_PORT"
-  ssh -q -t -i "$HOME/.ssh/id_rsa" -p "$INPUT_REMOTE_DOCKER_PORT" \
-      -o UserKnownHostsFile=/dev/null \
-      -o StrictHostKeyChecking=no "$INPUT_REMOTE_DOCKER_HOST" "$@"
+  ssh -q -t -i "$HOME/.ssh/id_rsa" -p "$INPUT_REMOTE_DOCKER_PORT" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "$INPUT_REMOTE_DOCKER_HOST" "$@"
 }
 
 if [ -z "$INPUT_REMOTE_DOCKER_HOST" ]; then
