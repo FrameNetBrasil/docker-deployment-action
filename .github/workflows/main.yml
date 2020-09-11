@@ -18,6 +18,7 @@ jobs:
       uses: wshihadeh/docker-deployment-action@master
       with:
         remote_docker_host: ${{ secrets.HOST }}
+        remote_docker_port: ${{ secrets.PORT }}
         ssh_private_key: ${{ secrets.PRIVATE_KEY }}
         ssh_public_key: ${{ secrets.PUBLIC_KEY }}
         deployment_mode: docker-compose
@@ -32,6 +33,7 @@ jobs:
       uses: wshihadeh/docker-deployment-action@master
       with:
         remote_docker_host: ${{ secrets.HOST }}
+        remote_docker_port: ${{ secrets.PORT }}
         ssh_private_key: ${{ secrets.PRIVATE_KEY }}
         ssh_public_key: ${{ secrets.PUBLIC_KEY }}
         deployment_mode: docker-compose
